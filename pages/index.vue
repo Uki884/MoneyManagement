@@ -1,36 +1,19 @@
 <template>
   <div class="container">
-    <div>
-      <logo />
+    <div class="main">
       <h1 class="title">
         MoneyMana
       </h1>
       <h2 class="subtitle">
         お金管理
       </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
     </div>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
 export default {
-  components: {
-    Logo
-  },
+  components: {},
   created() {
     this.$axios.$get('/api/management/list')
   }
@@ -50,27 +33,18 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 32px;
+  padding-bottom: 80px;
+  position: relative;
 }
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+.main {
+  border-radius: 24px;
+  background-color: #e0e5ec;
+  box-shadow: 9px 9px 16px rgb(163, 177, 198, 0.6),
+    -9px -9px 16px rgba(255, 255, 255, 0.5);
+  height: 100%;
+  padding: 24px;
+  width: 600px;
 }
 </style>
