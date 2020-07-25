@@ -21,5 +21,6 @@ export default {
   display: flex;
   position: absolute;
   bottom: 12px;
+  width: 100%;
 }
 </style>

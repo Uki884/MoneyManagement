@@ -7,13 +7,15 @@
       <h2 class="subtitle">
         お金管理
       </h2>
+      <Payment />
     </div>
   </div>
 </template>
 
 <script>
+import Payment from '@/components/Organisms/Payment.vue'
 export default {
-  components: {},
+  components: { Payment },
   created() {
     this.$axios.$get('/api/management/list')
   }
@@ -26,6 +28,9 @@ export default {
   @apply min-h-screen flex justify-center items-center text-center mx-auto;
 }
 */
+.subtitle {
+  padding-bottom: 12px;
+}
 .container {
   margin: 0 auto;
   min-height: 100vh;

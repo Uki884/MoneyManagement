@@ -1,14 +1,12 @@
 <template>
   <div class="default">
     <nuxt />
-    <Footer />
   </div>
 </template>
 
 <script>
-import Footer from '@/components/Organisms/Footer.vue'
 export default {
-  components: { Footer }
+  components: {}
 }
 </script>
 

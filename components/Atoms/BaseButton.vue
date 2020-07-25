@@ -8,9 +8,9 @@ export default {}
 
 <style scoped lang="scss">
 .button {
-  border-radius: 24px;
+  border-radius: 12px;
   height: 50px;
-  width: 90px;
+  width: 120px;
   margin-left: 8px;
   align-items: center;
   display: flex;
