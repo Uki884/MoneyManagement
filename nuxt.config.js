@@ -47,6 +47,9 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/pwa'
   ],
+  router: {
+    middleware: 'payment'
+  },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options

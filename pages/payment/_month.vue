@@ -2,12 +2,9 @@
   <div class="container">
     <div class="main">
       <div class="flex justify-between mb-4">
-        <div @click="previous">
-          <BaseButton @click.native="previous" text="前月" width="90" />
-        </div>
-        <div @click="next">
-          <BaseButton @click.native="next" text="次月" width="90" />
-        </div>
+        <BaseButton @click="previous()" text="前月" width="90" />
+        <BaseButton @click="now()" text="今月" width="90" />
+        <BaseButton @click="next()" text="次月" width="90" />
       </div>
       <Payment :data="data" />
     </div>
@@ -22,13 +19,22 @@ export default {
   components: { Payment, BaseButton },
   data() {
     return {
-      data: {}
+      data: {},
+      month: ''
+    }
+  },
+  watch: {
+    '$route.params.month': {
+      immediate: true,
+      handler(newValue) {
+        this.month = newValue
+      }
     }
   },
   async created() {
     await this.$axios
       .$get('/api/payment', {
-        params: { month: this.$route.params.month }
+        params: { month: this.month }
       })
       .then((Response) => {
         if (Response.payment.length) {
@@ -45,13 +51,22 @@ export default {
       })
   },
   methods: {
-    async previous() {
-      if (this.$route.params.month <= 1) return
-      await this.$router.push(`/payment/${this.$route.params.month--}`)
+    previous() {
+      if (this.month > 1) {
+        this.month--
+        console.log('発火')
+        this.$router.push({ path: `/payment/${this.month}` })
+      }
+    },
+    async now() {
+      const now = new Date()
+      await this.$router.push(`/payment/${now.getMonth() + 1}`)
     },
     async next() {
-      if (this.$route.params.month > 11) return
-      await this.$router.push(`/payment/${this.$route.params.month++}`)
+      if (this.month < 12) {
+        this.month++
+        await this.$router.push(`/payment/${this.month}`)
+      }
     }
   }
 }
