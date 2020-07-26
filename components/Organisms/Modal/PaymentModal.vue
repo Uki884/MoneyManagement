@@ -4,7 +4,6 @@
       <div class="text-center">
         <div>{{ input.month }}月のお支払いを完了しますか？</div>
         <div>相手に支払った金額を入力して下さい</div>
-        {{ price }}
         <BaseInput v-model="input.price" caption="円" />
         <div>何を支払った？あればどうぞ</div>
         <BaseInput v-model="input.content" />
@@ -55,6 +54,8 @@ export default {
       }
       console.log(payload)
       await this.$axios.post('/api/payment', payload)
+      await this.$store.commit('closeModal')
+      await this.$router.replace(`/payment/${this.input.month}`)
     }
   }
 }
