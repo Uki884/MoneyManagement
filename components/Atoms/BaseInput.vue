@@ -36,6 +36,7 @@ export default {
     display: flex;
     align-items: center;
   }
+  padding: 12px;
   height: 48px;
   margin: 12px;
   width: 100%;
