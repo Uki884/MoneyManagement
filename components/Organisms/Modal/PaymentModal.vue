@@ -55,7 +55,6 @@ export default {
       console.log(payload)
       await this.$axios.post('/api/payment', payload)
       await this.$store.commit('closeModal')
-      await this.$router.replace(`/payment/${this.input.month}`)
     }
   }
 }

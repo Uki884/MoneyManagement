@@ -14,6 +14,7 @@
 <script>
 import Payment from '@/components/Organisms/Payment.vue'
 import BaseButton from '@/components/Atoms/BaseButton.vue'
+import { mapGetters } from 'vuex'
 
 export default {
   components: { Payment, BaseButton },
@@ -23,32 +24,29 @@ export default {
       month: ''
     }
   },
+  computed: {
+    ...mapGetters({
+      modalComponent: 'modals'
+    })
+  },
   watch: {
     '$route.params.month': {
       immediate: true,
       handler(newValue) {
         this.month = newValue
       }
+    },
+    modalComponent: {
+      handler(newValue) {
+        console.log(newValue.length)
+        if (newValue.length === 0) {
+          this.getPayment()
+        }
+      }
     }
   },
   async created() {
-    await this.$axios
-      .$get('/api/payment', {
-        params: { month: this.month }
-      })
-      .then((Response) => {
-        if (Response.payment.length) {
-          const data = Response.payment.map((item) => {
-            const payment = {}
-            payment.content = item.content
-            payment.price = item.price
-            payment.month = item.month
-            payment.year = item.year
-            return payment
-          })
-          this.data = data[0]
-        }
-      })
+    await this.getPayment()
   },
   methods: {
     previous() {
@@ -67,6 +65,25 @@ export default {
         this.month++
         await this.$router.push(`/payment/${this.month}`)
       }
+    },
+    async getPayment() {
+      await this.$axios
+        .$get('/api/payment', {
+          params: { month: this.month }
+        })
+        .then((Response) => {
+          if (Response.payment.length) {
+            const data = Response.payment.map((item) => {
+              const payment = {}
+              payment.content = item.content
+              payment.price = item.price
+              payment.month = item.month
+              payment.year = item.year
+              return payment
+            })
+            this.data = data[0]
+          }
+        })
     }
   }
 }
