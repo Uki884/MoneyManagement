@@ -4,6 +4,9 @@ module.exports = {
   /*
    ** Headers of the page
    */
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+  },
   head: {
     title: process.env.npm_package_name || '',
     meta: [
@@ -28,7 +31,7 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ['~/plugins/axios'],
   /*
    ** Nuxt.js dev-modules
    */
