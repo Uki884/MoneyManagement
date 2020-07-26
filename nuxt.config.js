@@ -52,6 +52,12 @@ module.exports = {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {},
+  proxy: {
+    '/api/': {
+      target: 'https://moneymanagement-yh.herokuapp.com',
+      pathRewrite: { '^/api/': '' }
+    }
+  },
   /*
    ** Build configuration
    */
