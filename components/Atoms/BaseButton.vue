@@ -1,5 +1,7 @@
 <template>
-  <div :style="`width: ${width}px;`" class="button">{{ text }}</div>
+  <div :style="`width: ${width}px;`" class="button">
+    {{ text }}
+  </div>
 </template>
 
 <script>

@@ -1,17 +1,47 @@
 <template>
   <div class="content__container">
-    <div class="content__month">7月</div>
+    <div class="content__month">{{ month }}月</div>
+    <div class="content__text">{{ data.content }}</div>
     <div class="content__items">
       <div class="content__item">
-        <div class="content__item__content">9,0000円</div>
-        <div class="content__item__payment__ok">済</div>
+        <template v-if="Object.keys(data).length > 0">
+          <div class="content__item__content">{{ data.price }}円</div>
+          <div class="content__item__payment__ok">済</div>
+        </template>
+        <template v-else>
+          <div class="content__text">お支払い情報がありません</div>
+        </template>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    data: {
+      type: Object,
+      default: null
+    }
+  },
+  data() {
+    return {
+      month: ''
+    }
+  },
+  watch: {
+    '$route.params.month': {
+      immediate: true,
+      handler(newValue) {
+        console.log(newValue)
+        this.month = newValue
+      }
+    }
+  },
+  created() {
+    console.log(this.$route.params.month)
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -20,6 +50,10 @@ export default {}
     min-width: 54px;
     min-height: 110px;
     height: calc(100% - 64px);
+  }
+  &__text {
+    font-size: 18px;
+    text-decoration: underline;
   }
   &__month {
     font-size: 32px;

@@ -1,6 +1,6 @@
 <template>
   <div class="payment">
-    <BaseContent />
+    <BaseContent :data="data" />
     <div class="flex justify-center">
       <BaseButton @click.native="pay" text="支払う" width="120" />
     </div>
@@ -14,6 +14,12 @@ export default {
   components: {
     BaseContent,
     BaseButton
+  },
+  props: {
+    data: {
+      type: Object,
+      default: null
+    }
   },
   methods: {
     pay() {

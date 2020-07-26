@@ -14,7 +14,9 @@ module.exports = (sequelize, DataTypes) => {
   payment.init(
     {
       content: DataTypes.STRING,
-      price: DataTypes.INTEGER
+      price: DataTypes.INTEGER,
+      month: DataTypes.INTEGER,
+      year: DataTypes.INTEGER
     },
     {
       sequelize,

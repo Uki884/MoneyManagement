@@ -15,8 +15,16 @@ import Payment from '@/components/Organisms/Payment.vue'
 import BaseButton from '@/components/Atoms/BaseButton.vue'
 export default {
   components: { Payment, BaseButton },
+  data() {
+    return {
+      input: {
+        price: '90000',
+        month: ''
+      }
+    }
+  },
   created() {
-    this.$axios.$get('/api/management/list')
+    this.$axios.$get('/api/payment/list')
   },
   methods: {}
 }

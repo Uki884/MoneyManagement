@@ -11,6 +11,12 @@ module.exports = {
       content: {
         type: Sequelize.STRING
       },
+      year: {
+        type: Sequelize.INTEGER
+      },
+      month: {
+        type: Sequelize.INTEGER
+      },
       price: {
         type: Sequelize.INTEGER
       },
