@@ -1,9 +1,6 @@
 module.exports = {
   mode: 'universal',
   telemetry: false,
-  /*
-   ** Headers of the page
-   */
   env: {
     baseUrl: process.env.BASE_URL || 'http://localhost:3000'
   },
