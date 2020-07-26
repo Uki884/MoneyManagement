@@ -1,6 +1,9 @@
 module.exports = {
   mode: 'universal',
   telemetry: false,
+  /*
+   ** Headers of the page
+   */
   head: {
     title: process.env.npm_package_name || '',
     meta: [
@@ -52,12 +55,6 @@ module.exports = {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {},
-  proxy: {
-    '/api/': {
-      target: 'https://moneymanagement-yh.herokuapp.com/api/',
-      pathRewrite: { '^/api/': '' }
-    }
-  },
   /*
    ** Build configuration
    */
