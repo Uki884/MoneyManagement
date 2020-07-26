@@ -2,6 +2,16 @@
 
 const fs = require('fs')
 const path = require('path')
+const pg = require('pg')
+pg.types.setTypeParser(1082, 'text', function(text) {
+  return text
+})
+pg.types.setTypeParser(1184, 'text', function(text) {
+  return text
+})
+pg.types.setTypeParser(1114, 'text', function(text) {
+  return text
+})
 const Sequelize = require('sequelize')
 const basename = path.basename(__filename)
 const env = process.env.NODE_ENV || 'development'
