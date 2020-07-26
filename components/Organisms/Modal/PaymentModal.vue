@@ -53,7 +53,7 @@ export default {
         ...this.input
       }
       console.log(payload)
-      await this.$axios.post('/api/payment', payload)
+      await this.$axios.post(`${window.location.origin}/api/payment`, payload)
       await this.$store.commit('closeModal')
     }
   }

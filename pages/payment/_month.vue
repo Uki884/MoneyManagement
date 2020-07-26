@@ -68,7 +68,7 @@ export default {
     },
     async getPayment() {
       await this.$axios
-        .$get('/api/payment', {
+        .$get(`${window.location.origin}/api/payment`, {
           params: { month: this.month }
         })
         .then((Response) => {
