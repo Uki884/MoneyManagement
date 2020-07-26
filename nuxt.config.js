@@ -54,7 +54,7 @@ module.exports = {
   axios: {},
   proxy: {
     '/api/': {
-      target: 'https://moneymanagement-yh.herokuapp.com',
+      target: 'https://moneymanagement-yh.herokuapp.com/api/',
       pathRewrite: { '^/api/': '' }
     }
   },
