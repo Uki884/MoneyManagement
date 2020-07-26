@@ -1,9 +1,8 @@
 <template>
   <div class="payment">
     <BaseContent />
-    <div class="payment__buttons">
-      <BaseButton />
-      <BaseButton />
+    <div class="flex justify-center">
+      <BaseButton @click.native="pay" text="支払う" width="120" />
     </div>
   </div>
 </template>
@@ -15,6 +14,11 @@ export default {
   components: {
     BaseContent,
     BaseButton
+  },
+  methods: {
+    pay() {
+      this.$store.commit('openModal', 'PaymentModal')
+    }
   }
 }
 </script>
@@ -28,10 +32,5 @@ export default {
   padding: 12px;
   box-shadow: inset 2px 2px 4px rgb(163, 177, 198, 0.6),
     inset -2px -2px 4px rgba(255, 255, 255, 0.5);
-  &__buttons {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-  }
 }
 </style>

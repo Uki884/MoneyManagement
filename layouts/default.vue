@@ -1,12 +1,25 @@
 <template>
   <div class="default">
     <nuxt />
+    <component :is="component"></component>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import PaymentModal from '@/components/Organisms/Modal/PaymentModal.vue'
 export default {
-  components: {}
+  components: {
+    PaymentModal
+  },
+  computed: {
+    ...mapGetters({
+      modalComponent: 'modals'
+    }),
+    component() {
+      return this.modalComponent
+    }
+  }
 }
 </script>
 

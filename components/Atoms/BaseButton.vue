@@ -1,16 +1,26 @@
 <template>
-  <div class="button">テスト</div>
+  <div :style="`width: ${width}px;`" class="button">{{ text }}</div>
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    text: {
+      type: String,
+      default: ''
+    },
+    width: {
+      type: String,
+      default: '120'
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss">
 .button {
   border-radius: 12px;
   height: 50px;
-  width: 120px;
   margin-left: 8px;
   align-items: center;
   display: flex;

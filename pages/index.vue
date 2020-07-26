@@ -1,12 +1,10 @@
 <template>
   <div class="container">
     <div class="main">
-      <h1 class="title">
-        MoneyMana
-      </h1>
-      <h2 class="subtitle">
-        お金管理
-      </h2>
+      <div class="flex justify-between mb-4">
+        <BaseButton text="前月" width="90" />
+        <BaseButton text="次月" width="90" />
+      </div>
       <Payment />
     </div>
   </div>
@@ -14,11 +12,13 @@
 
 <script>
 import Payment from '@/components/Organisms/Payment.vue'
+import BaseButton from '@/components/Atoms/BaseButton.vue'
 export default {
-  components: { Payment },
+  components: { Payment, BaseButton },
   created() {
     this.$axios.$get('/api/management/list')
-  }
+  },
+  methods: {}
 }
 </script>
 
